@@ -76,7 +76,7 @@ $sql = "select as_type , as_balance , acid , as_time_ymd , as_time , as_money fr
 	   .$jizhang_asset_paymethod1
 	   ." where as_time between "
 	   .$time1_origin." and ".$time2_origin
-	   .") as c order by as_time";
+	   .") as c order by as_time , acid";           //日期一样就按acid由大到小，即记录时间上的由后往前
 //为实现分页功能修改sql查询语句
 $sqlC = $sql;	//先把sql备份一个，后面用到
 $sql = $sql." LIMIT  $offset , $pagesize";
@@ -134,7 +134,7 @@ $B = $B1-$B2-$B4;
 echo <<< eot
 	<thead>
 	<tr>
-		<th bgcolor='#EBEBEB' style="width:20%">记录号</th>
+		<th bgcolor='#EBEBEB'>记录号</th>
 		<th bgcolor='#EBEBEB'>时间</th>
 		<th bgcolor='#EBEBEB'>金额</th>
 		<th bgcolor='#EBEBEB'>备注</th>

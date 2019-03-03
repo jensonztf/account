@@ -8,6 +8,15 @@
   </tr>
 </table>
 
+<script language="javascript">
+function linkokok(url){
+  question = confirm("数据即将清除，确认吗？");
+  if (question){
+   window.location.href = url;
+ }
+}
+</script>
+
 <?php        
 //每页显示的数
 $pagesize = 10;
@@ -86,7 +95,7 @@ $query=mysqli_query($conn,$query_sql);
 			    echo "<td align='left' bgcolor='#FFFFFF' data-title='账户(或转出户头)'><font color='DeepPink'>". $paymethodinfo['classname'] ."</font></td>";
                echo "<td align='left' bgcolor='#FFFFFF' data-title='备注'><font color='DeepPink'>". $row['acremark'] ."</font></td>";
 			}
-                echo "<td align='left' bgcolor='#FFFFFF' data-title='操作'><a href=xiugai.php?id=".$row['acid'].">编辑</a> <a href=shanchu.php?id=".$row['acid'].">删除</a></td>";
+                echo "<td align='left' bgcolor='#FFFFFF' data-title='操作'><a href=xiugai.php?id=".$row['acid'].">编辑</a> <a href=\"javascript:linkokok('shanchu.php?id=".$row['acid']."')\">删除</a></td>";
                 echo "</tr>";
             }
             echo "</tbody>";

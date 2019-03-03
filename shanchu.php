@@ -37,9 +37,9 @@
 				$sql="delete from jizhang_account where acid='$_GET[id]' and jiid='$_SESSION[uid]'";
 				$result = mysqli_query($conn,$sql);
 	            if ($result)
-	            echo("<script type='text/javascript'>alert('已删除一条记录！');history.go(-1);</script>");
+	            echo("<script type='text/javascript'>alert('已删除一条记录！');location.href=document.referrer;</script>");
 	            else
-	            echo("<script type='text/javascript'>alert('删除出错！');history.go(-1);</script>"); 
+	            echo("<script type='text/javascript'>alert('删除出错！');location.href=document.referrer;</script>"); 
 			}
 
 		}
@@ -77,37 +77,24 @@
 				$sql="delete from jizhang_account where acid='$_GET[id]' and jiid='$_SESSION[uid]'";
 				$result = mysqli_query($conn,$sql);
 	            if ($result)
-	            echo("<script type='text/javascript'>alert('已删除一条记录！');history.go(-1);</script>");
+	            echo("<script type='text/javascript'>alert('已删除一条记录！');location.href=document.referrer;</script>");
 	            else
-	            echo("<script type='text/javascript'>alert('删除出错！');history.go(-1);</script>"); 
+	            echo("<script type='text/javascript'>alert('删除出错！');location.href=document.referrer;</script>"); 
 			}
 
 		}
     }
 
 ?>
-<?php
-        if (isset($_GET['uid'])&&$_GET['uid']) {
 
-$sql="delete from jizhang_account where jiid='$_SESSION[uid]'";
-$result = mysqli_query($conn,$sql);
-$sqls="delete from jizhang_account_class where ufid='$_SESSION[uid]'";
-            $results = mysqli_query($conn,$sqls);
-            if ($results)
-            echo("<script type='text/javascript'>alert('数据已全部删除成功！');window.location='zhanghao.php';</script>");
-            else
-            echo("<script type='text/javascript'>alert('删除出错！');window.location='zhanghao.php';</script>"); 
-    } // end if
-
-?>
 <?php
 if (isset($_REQUEST['shanchu'])&&$_REQUEST['shanchu'] ){
  if(isset($_POST['del_id'])&&$_POST['del_id']!=""){
              $del_id= implode(",",$_POST['del_id']); 
              mysqli_query($conn,"delete from jizhang_account where jiid='$_SESSION[uid]' and acid in ($del_id)"); 
-             echo("<script type='text/javascript'>alert('删除成功！');history.go(-1);</script>"); 
+             echo("<script type='text/javascript'>alert('删除成功！');location.href=document.referrer;</script>"); 
       }else{ 
-             echo("<script type='text/javascript'>alert('请先选择项目！');history.go(-1);</script>"); 
+             echo("<script type='text/javascript'>alert('请先选择项目！');location.href=document.referrer;</script>"); 
       } 
 	  } 
 ?>
